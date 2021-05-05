@@ -25,6 +25,8 @@ const imageSchema = new mongoose.Schema({
     imageUrl: String,
 });
 
+//TESTING
+
 const popDatabase = (names) => {
     names.forEach((title) => {
         const title = mongoose.model(title, imageSchema)
