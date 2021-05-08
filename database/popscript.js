@@ -6,14 +6,14 @@ const Ipsum = require('ipsum').Ipsum
 let groot = new Ipsum();
 
 // Create Connections ( I used both methods which is NOT best pratice, but I needed to)
-const db = mongoose.createConnection('mongodb://localhost/FEC_test', {
+const db = mongoose.createConnection('mongodb://localhost/photogallery', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true
 });
 
-mongoose.connect('mongodb://localhost/FEC_test', {
+mongoose.connect('mongodb://localhost/photogallery', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
