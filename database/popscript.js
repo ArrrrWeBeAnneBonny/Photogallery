@@ -1,60 +1,24 @@
-// import faker from 'faker';
-const axios = require('axios');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const fs = require('fs');
-const AWS = require('aws-sdk');
-// var numberToWords = require('number-to-words');
 const faker = require('faker');
 faker.locale = "en";
 const Ipsum = require('ipsum').Ipsum
 let groot = new Ipsum();
 
-
-
-// Amazon s3 setup
-const BUCKET_NAME = 'annebonny';
-const ID = '';
-const SECRET = '';
-
-const s3 = new AWS.S3({
-  accessKeyId: 'AKIA5ECESMG7W6YPYCU2',
-  secretAccessKey: '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'
-});
-
-const uploadFile = (fileName) => {
-  // Read content from the file
-  const fileContent = fs.readFileSync(fileName);
-
-  // Setting up S3 upload parameters
-  const params = {
-      Bucket: BUCKET_NAME,
-      Key: fileName,
-      Body: fileContent
-  };
-
-  // Uploading files to the bucket
-  s3.upload(params, function(err, data) {
-      if (err) {
-          throw err;
-      }
-      console.log(`File uploaded successfully. ${data.Location}`);
-  });
-};
-
-const db = mongoose.createConnection('mongodb://localhost/FEC', {
+// Create Connections ( I used both methods which is NOT best pratice, but I needed to)
+const db = mongoose.createConnection('mongodb://localhost/FEC_test', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true
 });
 
-// mongoose.connect('mongodb://localhost/FEC', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useFindAndModify: false,
-//   useCreateIndex: true
-// });
+mongoose.connect('mongodb://localhost/FEC_test', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+});
 
 // Create Schema
 const imageSchema = new mongoose.Schema({
@@ -66,135 +30,54 @@ const imageSchema = new mongoose.Schema({
   imageUrl: [String],
 });
 
-// let Doc = mongoose.model('Doc', imageSchema);
-
-// Random Number Generator (double inclusive)
+// Random Generators
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
-// Populate Collections
+function randomDate(start, end) {
+  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toString();
+}
+// Seeding Collections
 let campId = [];
 
-for (var i = 1; i < 00; i++) {
+for (var i = 1; i < 100; i++) {
   campId.push(i.toString());
 }
-
 for (var i = 0; i < campId.length; i++) {
   db.createCollection(campId[i]);
 }
 
+const urls = ['https://annebonny.s3-us-west-1.amazonaws.com/photo-1478131143081-80f7f84ca84d.jpeg',
+  'https://annebonny.s3-us-west-1.amazonaws.com/photo-1486915309851-b0cc1f8a0084.jpeg',
+  'https://annebonny.s3-us-west-1.amazonaws.com/photo-1504280390367-361c6d9f38f4.jpeg',
+  'https://annebonny.s3-us-west-1.amazonaws.com/photo-1517824806704-9040b037703b.jpeg',
+  'https://annebonny.s3-us-west-1.amazonaws.com/photo-1523987355523-c7b5b0dd90a7.jpeg',
+  'https://annebonny.s3-us-west-1.amazonaws.com/photo-1532339142463-fd0a8979791a.jpeg',
+  'https://annebonny.s3-us-west-1.amazonaws.com/photo-1571687949921-1306bfb24b72.jpeg']
+
 // Populate Individual collections.
-// Create Main Page Data 1st
-
-const popMainPage = function () {
-  let userNameArray = [];
-  let Doc = mongoose.model('0', imageSchema);
-  // Populate Name Array
-  for (var i = 0; i < 4; i++) {
-    userNameArray.push(faker.name.findName());
-  }
-  // Populate Database
-  for (var i = 0; i < userNameArray.length; i++) {
-    db.collection('0').findOne({
-      userName: userNameArray[i]
-    }, function (err, results) {
-      if (err) {
-        console.log(err);
-      }
-      if (!results) {
-        axios({
-          method: 'get',
-          // url: 'https://api.ipgeolocation.io/astronomy?apiKey=' + `${config.API}` + '&location=' + city +',%20' + state + ',%20US',
-          url: 'https://api.unsplash.com/search/photos?query=camping&client_id=RnbeOD4QsnDZClvaG7tH5rMFG1auRX3mc-jS6cBTz_0&page=1&per_page=10'
-        })
-
-        var instance = new Doc({
-          userName: userNameArray[i],
-          created: 'String', //res.results.created_at
-          helpfulness: getRandomIntInclusive(0, 15),
-          caption: 'String',
-          priority: getRandomIntInclusive(0, 5),
-          imageUrl: 'String',
-        }).save((err, data) => {
-          if (err) {
-            return console.log(err)
-          } else {
-            console.log('Data saved sucessfully')
-          }
-        });
-      } else {
-        console.log('The data is in the repo already!')
-      }
-    })
+const popOtherPages = function () {
+  for (var i = 1; i < 100; i++) {
+    for (var j = 1; j < 100; j++) {
+      let Doc = mongoose.model(j.toString(), imageSchema);
+      var instance = new Doc({
+        userName: faker.name.findName(),
+        created: randomDate(new Date(2012, 0, 1), new Date()),
+        helpfulness: getRandomIntInclusive(0, 15),
+        caption: groot.generate(10, 'sentences'),
+        priority: getRandomIntInclusive(0, 5),
+        imageUrl: urls[getRandomIntInclusive(0, 6)],
+      }).save((err, data) => {
+        if (err) {
+          return console.log(err)
+        } else {
+          console.log('Data saved sucessfully')
+        }
+      });
+    }
   }
 }
 
-// popMainPage();
-
-
-
-
-
-// let userName = [];
-// let created = [];
-// let helpfulness = [];
-// let caption = [];
-// let priority = [];
-// let imageurl = [];
-
-// // Generate Fake Data
-// for (var i = 0; i < 99; i++) {
-//     campId.push(i.toString());
-// }
-// for (var i = 0; i < 99; i++) {
-//     userName.push(faker.name.findName());
-// }
-// function randomDate(start, end) {
-//     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toString();
-// }
-// for (var i = 0; i < 99; i++) {
-//     created.push(randomDate(new Date(2012, 1, 1), new Date()));
-// }
-// function getRandomIntInclusive(min, max) {
-//     min = Math.ceil(min);
-//     max = Math.floor(max);
-//     return Math.floor(Math.random() * (max - min + 1) + min); //double inclusive
-// }
-// for (var i = 0; i < 99; i++) {
-//     helpfulness.push(getRandomIntInclusive(0, 10))
-// }
-// for (var i = 0; i < 99; i++) {
-//     priotirty.push(getRandomIntInclusive(0, 1))
-// }
-// for (var i = 0; i < 99; i++) {
-//     captiony.push(groot.generate())
-// }
-
-// testCollection.findOne({
-//     userName: 'Bob'
-//   }, function(err, results) {
-//     if (err) {
-//       console.log(err);
-//     }
-//     if (!results) {
-//       var instance = new testCollection({
-//         userName: 'Bob',
-//         created: 'String',
-//         helpfulness: 5,
-//         caption: 'String',
-//         priority: 'String',
-//         imageUrl: 'String',
-//       }).save((err, data) => {
-//         if (err) {
-//           return console.log(err)
-//         } else {
-//           console.log('Data saved sucessfully')
-//         }
-//     });
-// } else {
-//     console.log('The data is in the repo already!')
-//   }
-// })
+setTimeout(() => { popOtherPages() }, 1000);
