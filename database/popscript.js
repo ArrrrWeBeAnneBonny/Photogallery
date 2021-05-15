@@ -63,7 +63,7 @@ const popOtherPages = function () {
     for (var j = 1; j < 100; j++) {
       let Doc = mongoose.model(j.toString(), imageSchema);
       var instance = new Doc({
-        userName: faker.name.findName(),
+        userName: faker.name.firstName() + ' ' + faker.name.lastName(),
         created: randomDate(new Date(2012, 0, 1), new Date()),
         helpfulness: getRandomIntInclusive(0, 15),
         caption: groot.generate(10, 'sentences'),
