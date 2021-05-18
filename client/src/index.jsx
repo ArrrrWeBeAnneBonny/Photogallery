@@ -21,6 +21,10 @@ class App extends React.Component {
     }));
   }
 
+  tonight () {
+    //nothing
+  }
+
   render() {
     return (
     <div>
