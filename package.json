@@ -8,22 +8,42 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "react-dev": "webpack -d --watch",
+    "server-dev": "nodemon server/server.js"
   },
   "dependencies": {
-    "Faker": "^0.7.2",
+    "jquery": "^3.6.0",
     "aws-sdk": "^2.902.0",
+    "body-parser": "^1.19.0",
     "axios": "^0.21.1",
     "bulksplash": "^2.0.2",
     "express": "^4.17.1",
     "faker": "^5.5.3",
     "ipsum": "^1.0.0",
+    "lodash": "^4.17.21",
     "mongoose": "^5.12.7",
     "nodemon": "^2.0.7",
     "number-to-words": "^1.2.4"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
-    "jest": "^26.6.3"
-  }
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
+    "@shelf/jest-mongodb": "^1.2.4",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "react": "^17.0.2",
+    "react-axios": "^2.0.5",
+    "react-dom": "^17.0.2",
+    "jest": "^26.6.3",
+    "webpack": "^2.2.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "preset": "@shelf/jest-mongodb"
 }

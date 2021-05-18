@@ -25,6 +25,10 @@ app.use(express.urlencoded({ extended: true }));
 //   res.end()
 // });
 
+app.get('/', (req, res) => {
+  console.log('hello world');
+});
+
 /// TSTING FOR PULL REQUEST
 
 
