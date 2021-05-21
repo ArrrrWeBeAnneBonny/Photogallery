@@ -72,7 +72,7 @@ class Carousel extends React.Component {
 				<Arrow direction="left" clickFunction={ this.previousSlide } glyph="&#9664;" />
 				{/* <ImageSlide url={ imgUrls[0] } /> */}
                 {/* <div style={{backgroundImage:"https://annebonny.s3-us-west-1.amazonaws.com/photo-1504280390367-361c6d9f38f4.jpeg"}}></div> */}
-                <img src={imgUrls[this.state.currentImageIndex]} height='400px' widght='300px' class="center" style={{marginBottom: '0 !important'}}></img>
+                <img src={imgUrls[this.state.currentImageIndex]} height='400px' widght='300px' align="center" style={{marginBottom: '0 !important'}}></img>
 				<Arrow direction="right" clickFunction={ this.nextSlide } glyph="&#9654;" />
 			</div>
 		);
