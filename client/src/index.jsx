@@ -28,7 +28,7 @@ class App extends React.Component {
   render() {
     return (
     <div>
-      <h1>Photogallery</h1>
+      <h1>HipCamp</h1>
       {/* <Carousel /> */}
       <div style={{position: 'relative', overflow: 'hidden'}}>
       <div className='images' style={{maxWidth: '98%', maxHeight: '20%', overflow: 'hidden'}}>
@@ -44,4 +44,4 @@ class App extends React.Component {
 
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('photogallery'));
