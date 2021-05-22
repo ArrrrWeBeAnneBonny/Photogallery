@@ -1,35 +1,31 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const bodyParser = require('body-parser');
-const port = 4000;
-const database = require(__dirname + '/../database/database.js')
+const port = 3004;
+// const database = require(__dirname + '/../database/database.js')
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
-// app.post('/get', async (req, res) => {
-//   let thing = await database.getTimes(req.body.city, req.body.state)
-//   .then((results) => {
-//     console.log('get time ' + results);
-//     res.send(results);
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
+//   next();
 // });
 
-// app.post('/', (req, res) => {
-//   console.log('POST request sucessful ' + req.body.city);
-//   database.saveTimes(req.body.city, req.body.state)
-//   res.end()
-// });
+// app.use(cors({
+//   origin: '*'
+// }));
 
 app.get('/', (req, res) => {
   console.log('hello world');
+  // res.sendFile('/Users/michaelgallien/HackReactor/FEC/photogallery/client/dist/index.html');
 });
 
-/// TSTING FOR PULL REQUEST
+// path.join(__dirname + '/../client/dist/index.html')
 
 
 app.listen(port, () => {

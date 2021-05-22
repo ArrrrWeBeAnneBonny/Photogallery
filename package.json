@@ -9,14 +9,15 @@
   },
   "scripts": {
     "test": "jest --force-exit --detectOpenHandles",
-    "react": "webpack -d --watch",
-    "server": "nodemon server/server.js"
+    "built-dev": "webpack -d --watch",
+    "start": "nodemon server/server.js"
   },
   "dependencies": {
     "aws-sdk": "^2.902.0",
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "bulksplash": "^2.0.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "faker": "^5.5.3",
     "ipsum": "^1.0.0",
