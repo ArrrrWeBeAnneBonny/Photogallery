@@ -14,21 +14,19 @@ class App extends React.Component {
     this.state = {
       show: false,
       data: '',
-      firstThreeImages: ''
     }
     this.showModal = this.showModal.bind(this);
   }
 
-  getData() {
+  getData(campSite) {
     axios.get('/photogallery', {
       params: {
-        campId: 5
+        campId: campSite
       }
     })
       .then((response) => {
         this.setState({
-          data: response.data,
-          firstThreeImages: [response.data[0].imageUrl[0], response.data[1].imageUrl[0], response.data[2].imageUrl[0]]
+          data: response.data
         })
       })
       .then((results) => {
@@ -40,7 +38,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getData()
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const campSite = urlParams.get('campId');
+    this.getData(campSite)
   }
 
   showModal() {
