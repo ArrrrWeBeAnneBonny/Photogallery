@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Create Connections ( I used both methods which is NOT best pratice, but I needed to)
-// const db = mongoose.createConnection('mongodb://localhost/photogallery', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useFindAndModify: false,
-//   useCreateIndex: true
-// });
+const db = mongoose.createConnection('mongodb://localhost/photogallery', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+});
 
 mongoose.connect('mongodb://localhost/photogallery', {
   useNewUrlParser: true,
@@ -39,7 +39,6 @@ const docsCounter = (collectionNumber, calback) => {
 
 const countDocs = function () {
   let result = '';
-  // let resultsArray = [];
   for (var i = 1; i < 100; i++) {
     let Doc = mongoose.model(i.toString(), imageSchema)
     Doc.countDocuments({}, function (err, count) {
@@ -47,30 +46,19 @@ const countDocs = function () {
         console.log(err)
       } else {
         return count;
-        // if (count == 99) {
-        //   result = true;
-        // } else {
-        //   result = false;
-        // }
-        // resultsArray.push(count)
-        // console.log("Count :", count)
       }
     });
   }
-  // for (var i = 0; i < resultsArray.length; i++) {
-  //   if (resultsArray[i] === 99) {
-  //     result = true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-  // const print = function() {
-  //   console.log(result);
-  // }
+};
 
-  // setTimeout(print(), 500);
-
+const getImages = function(collectionNumber) {
+  const collection = db.collection(collectionNumber.toString());
+  const result = collection.find({}).toArray();
+  return result;
 }
 
+
+
+exports.getImages = getImages;
 exports.countDocs = countDocs;
 exports.docsCounter = docsCounter;
