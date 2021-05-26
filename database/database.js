@@ -27,12 +27,6 @@ const imageSchema = new mongoose.Schema({
 
 let Doc = mongoose.model('doc', imageSchema);
 
-
-// const getPrice = (query, callback) => {
-//   return Price.find(query, callback);
-// }
-
-
 const docsCounter = (collectionNumber, calback) => {
   return db.collection(collectionNumber).count();
 }

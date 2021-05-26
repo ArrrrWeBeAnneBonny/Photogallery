@@ -31,9 +31,9 @@ class App extends React.Component {
           firstThreeImages: [response.data[0].imageUrl[0], response.data[1].imageUrl[0], response.data[2].imageUrl[0]]
         })
       })
-      // .then((results) => {
-      //   console.log(this.state.data)
-      // })
+      .then((results) => {
+        console.log(this.state.data)
+      })
       .catch(function (error) {
         console.log(error);
       })
@@ -42,9 +42,6 @@ class App extends React.Component {
   componentDidMount() {
     this.getData()
   }
-
-
-
 
   showModal() {
     this.setState(prevState => ({
@@ -56,14 +53,6 @@ class App extends React.Component {
     return (
       <div>
         <h1>HipCamp</h1>
-        {/* <Carousel /> */}
-        {/* <div style={{ position: 'relative', overflow: 'hidden' }}>
-          <div className='images' style={{ maxWidth: '98%', maxHeight: '20%', overflow: 'hidden' }}>
-            <img className='1' src={this.state.data[0]} onClick={() => this.showModal()} width="400" height="250" style={{ float: 'left', paddingRight: '8px' }} />
-            <img src={this.state.data[1]} onClick={() => this.showModal()} width="400" height="250" style={{ float: 'left', paddingRight: '8px' }} />
-            <img src={this.state.data[2]} onClick={() => this.showModal()} width="400" height="250" style={{ float: 'left', paddingRight: '8px', position: 'absolute', display: 'inline' }} />
-          </div>
-        </div> */}
         {this.state.data.length > 0 &&
         <Images data={this.state.data} showModal={this.showModal}/>
         }
@@ -73,7 +62,6 @@ class App extends React.Component {
       </div>
     )
   }
-
 }
 
 ReactDOM.render(<App />, document.getElementById('photogallery'));

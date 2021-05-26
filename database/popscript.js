@@ -45,9 +45,9 @@ let campId = [];
 for (var i = 1; i < 100; i++) {
   campId.push(i.toString());
 }
-// for (var i = 0; i < campId.length; i++) {
-//   db.createCollection(campId[i]);
-// }
+for (var i = 0; i < campId.length; i++) {
+  db.createCollection(campId[i]);
+}
 
 const urls = ['https://annebonny.s3-us-west-1.amazonaws.com/photo-1478131143081-80f7f84ca84d.jpeg',
   'https://annebonny.s3-us-west-1.amazonaws.com/photo-1486915309851-b0cc1f8a0084.jpeg',
@@ -80,4 +80,4 @@ const popOtherPages = function () {
   }
 }
 
-// setTimeout(() => { popOtherPages() }, 1000);
+setTimeout(() => { popOtherPages() }, 1000);
