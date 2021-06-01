@@ -14,7 +14,11 @@ app.use(cors());
 
 
 app.get('/photogallery', (req, res) => {
-  let campSite = req.query.campId;
+  if (!req.query.campId) {
+    campSite = 1;
+  } else {
+    campSite = req.query.campId;
+  }
   database.getImages(campSite)
   .then((results) => {
     let resultsArray = []

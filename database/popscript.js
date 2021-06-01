@@ -80,4 +80,4 @@ const popOtherPages = function () {
   }
 }
 
-setTimeout(() => { popOtherPages() }, 1000);
+setTimeout(() => { popOtherPages() }, 10000);
