@@ -56,8 +56,8 @@ const imageSchema = new mongoose.Schema({
     userName: String,
     userImg: String,
     created: String,
-    helpfulness: Number,
-    caption: String,
+    helpfulness: [Number],
+    caption: [String],
     priority: Number,
     imageUrl: [String],
 });
@@ -205,10 +205,26 @@ const urls = ['https://annebonny.s3-us-west-1.amazonaws.com/photo-1478131143081-
     'https://annebonny.s3-us-west-1.amazonaws.com/photo-1571687949921-1306bfb24b72.jpeg']
 
 function randomImageArrayLengthAndPop() {
-    let amount = getRandomIntInclusive(0, 5);
+    let amount = getRandomIntInclusive(1, 5);
     let array = [];
     for (var i = 0; i < amount; i++) {
         array.push(urls[getRandomIntInclusive(0, 6)]);
+    }
+    return array;
+}
+
+function randomHelpfullness() {
+    let array = [];
+    for (var i = 0; i < 5; i++) {
+        array.push(getRandomIntInclusive(0, 10));
+    }
+    return array;
+}
+
+function randomCaptions() {
+    let array = [];
+    for (var i = 0; i < 5; i++) {
+        array.push(groot.generate(15, 'sentences'));
     }
     return array;
 }
@@ -251,8 +267,8 @@ const owner = async function (campSite) {
                             userName: allArray[i][0],
                             userImg: allArray[i][1],
                             created: randomDate(new Date(2012, 0, 1), new Date()),
-                            helpfulness: getRandomIntInclusive(0, 15),
-                            caption: groot.generate(15, 'sentences'),
+                            helpfulness: randomHelpfullness(),
+                            caption: randomCaptions(),
                             priority: getRandomIntInclusive(0, 5),
                             imageUrl: randomImageArrayLengthAndPop(),
                         }).save((err, data) => {
