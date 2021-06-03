@@ -6,6 +6,7 @@ const Modal = props => {
     if (props.show === false) {
         return null;
     } else {
+<<<<<<< Updated upstream
 
     return (
         <div className='modal' onClick={props.onClose}>
@@ -24,6 +25,12 @@ const Modal = props => {
                 </div>
                 <div className='modal-footer'>
                     <p style={{fontSize: '10px', textAlign: 'center', color: 'white', marginTop: '0 !important'}}>Caption goes Here</p>
+=======
+        return (
+            <div className='modal'  onClick={props.onClose}>
+                <div className='modal-content' onClick={e => e.stopPropagation()}>
+                    <Carousel data={props.data} location={props.location} />
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>
@@ -31,5 +38,7 @@ const Modal = props => {
 
     }
 }
+
+// style={color='#333333'}
 
 export default Modal

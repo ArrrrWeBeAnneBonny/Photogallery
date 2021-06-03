@@ -1,7 +1,13 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+<<<<<<< Updated upstream
 const port = 4000;
+=======
+var fs = require('fs');
+const { image } = require('faker');
+const port = 3000;
+>>>>>>> Stashed changes
 const database = require(__dirname + '/../database/database.js')
 
 app.use(bodyParser.json());
@@ -19,11 +25,31 @@ app.use(express.urlencoded({ extended: true }));
 //   });
 // });
 
+<<<<<<< Updated upstream
 // app.post('/', (req, res) => {
 //   console.log('POST request sucessful ' + req.body.city);
 //   database.saveTimes(req.body.city, req.body.state)
 //   res.end()
 // });
+=======
+app.get('/photogallery', (req, res) => {
+  if (!req.query.campId) {
+    campSite = 1;
+  } else {
+    campSite = req.query.campId;
+  }
+  database.getImages(campSite)
+  .then((results) => {
+    let resultsArray = []
+    results.forEach(element => {
+      resultsArray.push(element)
+      // console.log(resultsArray);
+    });
+    // console.log(resultsArray);
+    res.status(200).send(resultsArray);
+  })
+})
+>>>>>>> Stashed changes
 
 app.get('/', (req, res) => {
   console.log('hello world');
