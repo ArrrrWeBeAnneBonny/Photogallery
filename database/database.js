@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Create Connections ( I used both methods which is NOT best pratice, but I needed to)
-const db = mongoose.createConnection('mongodb://localhost/photogallery', {
+const db = mongoose.createConnection('mongodb://localhost/photogallery2', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true
 });
 
-mongoose.connect('mongodb://localhost/photogallery', {
+mongoose.connect('mongodb://localhost/photogallery2', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,

@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 var fs = require('fs');
 const { image } = require('faker');
-const port = 3004;
+const port = 3000;
 const database = require(__dirname + '/../database/database.js')
 
 app.use(bodyParser.json());
@@ -24,7 +24,9 @@ app.get('/photogallery', (req, res) => {
     let resultsArray = []
     results.forEach(element => {
       resultsArray.push(element)
+      // console.log(resultsArray);
     });
+    // console.log(resultsArray);
     res.status(200).send(resultsArray);
   })
 })
