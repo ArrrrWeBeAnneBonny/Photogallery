@@ -21,7 +21,7 @@ class App extends React.Component {
   }
 
   getData(campSite) {
-    axios.get('/photogallery', {
+    axios.get('http://ec2-54-183-90-91.us-west-1.compute.amazonaws.com/photogallery', {
       params: {
         campId: campSite
       }

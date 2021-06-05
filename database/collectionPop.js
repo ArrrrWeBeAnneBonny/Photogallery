@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const db = mongoose.createConnection('mongodb://localhost/photogallery2', {
+const db = mongoose.createConnection('mongodb://localhost/photogallery', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
