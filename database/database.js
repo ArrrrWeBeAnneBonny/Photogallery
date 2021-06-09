@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Create Connections ( I used both methods which is NOT best pratice, but I needed to)
-// const db = mongoose.createConnection('mongodb://localhost/photogallery', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useFindAndModify: false,
-//   useCreateIndex: true
-// });
+// For local service
+const db = mongoose.createConnection('mongodb://localhost/photogallery', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+})
 
 mongoose.connect('mongodb://localhost/photogallery', {
   useNewUrlParser: true,
@@ -16,61 +16,73 @@ mongoose.connect('mongodb://localhost/photogallery', {
   useCreateIndex: true
 });
 
-const imageSchema = new mongoose.Schema({
-  userName: String,
-  created: String,
-  helpfulness: Number,
-  caption: String,
-  priority: Number,
-  imageUrl: [String],
-});
+//for Docker
+// const db = mongoose.createConnection('mongodb://mongo:27017/photogallery', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false,
+//   useCreateIndex: true
+// })
+// .then(() => {
+//   console.log('connected!');
+// })
+// .catch(() => {
+//   console.log('connection failed');
+// })
 
-let Doc = mongoose.model('doc', imageSchema);
+// mongoose.connect('mongodb://mongo:27017/photogallery', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false,
+//   useCreateIndex: true
+// });
 
+// For JEST
+// const imageSchema = new mongoose.Schema({
+//   userName: String,
+//   created: String,
+//   helpfulness: Number,
+//   caption: String,
+//   priority: Number,
+//   imageUrl: [String],
+// });
 
-// const getPrice = (query, callback) => {
-//   return Price.find(query, callback);
-// }
+// let Doc = mongoose.model('doc', imageSchema);
 
+// const countDocs = function () {
+//   let result = '';
+//   for (var i = 1; i < 100; i++) {
+//     let Doc = mongoose.model(i.toString(), imageSchema)
+//     Doc.countDocuments({}, function (err, count) {
+//       if (err) {
+//         console.log(err)
+//       } else {
+//         return count;
+//       }
+//     });
+//   }
+// };
 
 const docsCounter = (collectionNumber, calback) => {
   return db.collection(collectionNumber).count();
 }
 
-const countDocs = function () {
-  let result = '';
-  // let resultsArray = [];
-  for (var i = 1; i < 100; i++) {
-    let Doc = mongoose.model(i.toString(), imageSchema)
-    Doc.countDocuments({}, function (err, count) {
-      if (err) {
-        console.log(err)
-      } else {
-        return count;
-        // if (count == 99) {
-        //   result = true;
-        // } else {
-        //   result = false;
-        // }
-        // resultsArray.push(count)
-        // console.log("Count :", count)
-      }
-    });
-  }
-  // for (var i = 0; i < resultsArray.length; i++) {
-  //   if (resultsArray[i] === 99) {
-  //     result = true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-  // const print = function() {
-  //   console.log(result);
-  // }
+// for docker
+// const getImages = function(collectionNumber) {
+//   const collection = mongoose.connection.db.collection(collectionNumber.toString());
+//   const result = collection.find({}).toArray();
+//   return result;
+// }
 
-  // setTimeout(print(), 500);
-
+//for local
+const getImages = function(collectionNumber) {
+  const collection = db.collection(collectionNumber.toString());
+  const result = collection.find({}).toArray();
+  return result;
 }
 
-exports.countDocs = countDocs;
+
+
+exports.getImages = getImages;
+// exports.countDocs = countDocs;
 exports.docsCounter = docsCounter;
