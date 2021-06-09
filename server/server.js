@@ -7,7 +7,7 @@ var fs = require('fs');
 const { image } = require('faker');
 const port = 3004;
 const database = require(__dirname + '/../database/database.js')
-const pop = require('/Users/michaelgallien/HackReactor/FEC/photogallery/database/popscript.js')
+// const pop = require('/Users/michaelgallien/HackReactor/FEC/photogallery/database/popscript.js')
 
 app.use(bodyParser.json());
 app.use(cors());

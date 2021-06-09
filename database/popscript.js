@@ -6,25 +6,26 @@ const Ipsum = require('ipsum').Ipsum
 let groot = new Ipsum();
 
 // Create Connections ( I used both methods which is NOT best pratice, but I needed to)
-mongoose.connect('mongodb://mongo:27017/photogallery', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true
-})
-.then(() => {
-  console.log('connected!')
-})
-.catch((err) => {
-  console.log(err)
-})
-
-// mongoose.connect('mongodb://127.0.0.1:27017/photogallery', {
+//for Docker
+// mongoose.connect('docker', {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true,
 //   useFindAndModify: false,
 //   useCreateIndex: true
-// });
+// })
+// .then(() => {
+//   console.log('connected!')
+// })
+// .catch((err) => {
+//   console.log(err)
+// })
+
+mongoose.connect('mongodb://127.0.0.1:27017/photogallery', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+});
 
 // Create Schema
 const imageSchema = new mongoose.Schema({
@@ -98,7 +99,7 @@ function randomCaptions() {
 
 let mainData = [{
   userName: 'Anne Bonny',
-  userImg: faker.internet.avatar(),
+  userImg: 'https://fec-overview.s3-us-west-2.amazonaws.com/ownerPics/cartoonAB.jpeg',
   created: randomDate(new Date(2012, 0, 1), new Date()),
   helpfulness: randomHelpfullness(),
   caption: randomCaptions(),

@@ -69,21 +69,14 @@ class Carousel extends React.Component {
 		this.setState({
 			images: imgArray
 		})
-		// console.log(imgArray);
-		// return imgArray;
 	}
 
 	componentWillMount() {
-		// let test = this.popImages()
-		// this.setState({
-		// 	images: test
-		// })
-		// console.log(this.props.data)
 		this.popImages();
 	}
 
 	render() {
-		// console.log(this.state.images)
+		console.log('image state: ' + this.state.images)
 		return (
 			<div className="carousel">
 				<div className='modal-header'>

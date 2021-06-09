@@ -2,42 +2,40 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // For local service
-// const db = mongoose.createConnection('mongodb://localhost/photogallery', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useFindAndModify: false,
-//   useCreateIndex: true
-// })
-
-// mongoose.connect('mongodb://localhost/photogallery2', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useFindAndModify: false,
-//   useCreateIndex: true
-// });
-
-
-
-//for Docker
-const db = mongoose.createConnection('mongodb://mongo:27017/photogallery', {
+const db = mongoose.createConnection('mongodb://localhost/photogallery', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true
 })
-.then(() => {
-  console.log('connected!');
-})
-.catch(() => {
-  console.log('connection failed');
-})
 
-mongoose.connect('mongodb://mongo:27017/photogallery', {
+mongoose.connect('mongodb://localhost/photogallery', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true
 });
+
+//for Docker
+// const db = mongoose.createConnection('mongodb://mongo:27017/photogallery', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false,
+//   useCreateIndex: true
+// })
+// .then(() => {
+//   console.log('connected!');
+// })
+// .catch(() => {
+//   console.log('connection failed');
+// })
+
+// mongoose.connect('mongodb://mongo:27017/photogallery', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false,
+//   useCreateIndex: true
+// });
 
 // For JEST
 // const imageSchema = new mongoose.Schema({
@@ -69,19 +67,19 @@ const docsCounter = (collectionNumber, calback) => {
   return db.collection(collectionNumber).count();
 }
 
-//for docker
-const getImages = function(collectionNumber) {
-  const collection = mongoose.connection.db.collection(collectionNumber.toString());
-  const result = collection.find({}).toArray();
-  return result;
-}
-
-//for local
+// for docker
 // const getImages = function(collectionNumber) {
-//   const collection = db.collection(collectionNumber.toString());
+//   const collection = mongoose.connection.db.collection(collectionNumber.toString());
 //   const result = collection.find({}).toArray();
 //   return result;
 // }
+
+//for local
+const getImages = function(collectionNumber) {
+  const collection = db.collection(collectionNumber.toString());
+  const result = collection.find({}).toArray();
+  return result;
+}
 
 
 
