@@ -1,16 +1,23 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 var fs = require('fs');
 const { image } = require('faker');
-const port = 3000;
+const port = 3004;
 const database = require(__dirname + '/../database/database.js')
+// const pop = require('/Users/michaelgallien/HackReactor/FEC/photogallery/database/popscript.js')
 
 app.use(bodyParser.json());
+app.use(cors());
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+
+
+// pop.popCollections();
+// setTimeout(() => { pop.popMainPage() }, 500);
+// setTimeout(() => { pop.popOtherPages() }, 1000);
 
 
 app.get('/photogallery', (req, res) => {

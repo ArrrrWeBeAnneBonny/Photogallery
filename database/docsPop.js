@@ -12,7 +12,7 @@ let reviewsConn = mongoose.createConnection('mongodb://localhost/reviewsDB', {
     useCreateIndex: true
 });
 
-let photoConn = mongoose.createConnection('mongodb://localhost/photogallery2', {
+let photoConn = mongoose.createConnection('mongodb://localhost/photogallery', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
@@ -25,6 +25,18 @@ let overviewConn = mongoose.createConnection('mongodb://localhost/FEC', {
     useFindAndModify: false,
     useCreateIndex: true
 });
+
+let campId = [];
+
+for (var i = 0; i < 100; i++) {
+  campId.push(i.toString());
+}
+
+const createCollections = async () => {
+    for (var i = 0; i < 99; i++) {
+       await photoConn.createCollection(campId[i]);
+    }
+}
 
 const reviewSchema = new mongoose.Schema({
     campId: {
@@ -246,6 +258,7 @@ const reviewers = async function (campSite) {
 }
 
 const owner = async function (campSite) {
+    await createCollections();
     await Overview.find({ campId: campSite })
         .then(async (results) => {
             let ownerArray = [results[0].owner.name, results[0].owner.imageUrl];
@@ -288,31 +301,33 @@ const owner = async function (campSite) {
 //     owner(i);
 // }
 
-const first25 = async () => {
-    for (var i = 0; i < 25; i++) {
-        owner(i);
-    }
-}
+// const first25 = async () => {
+//     for (var i = 0; i < 25; i++) {
+//         owner(i);
+//     }
+// }
 
-const second25 = async () => {
-    for (var i = 25; i < 50; i++) {
-        owner(i);
-    }
-}
+// const second25 = async () => {
+//     for (var i = 25; i < 50; i++) {
+//         owner(i);
+//     }
+// }
 
-const third25 = async () => {
-    for (var i = 50; i < 75; i++) {
-        owner(i);
-    }
-}
+// const third25 = async () => {
+//     for (var i = 50; i < 75; i++) {
+//         owner(i);
+//     }
+// }
 
-const fourth25 = async () => {
-    for (var i = 75; i < 100; i++) {
-        owner(i);
-    }
-}
+// const fourth25 = async () => {
+//     for (var i = 75; i < 100; i++) {
+//         owner(i);
+//     }
+// }
 
-first25();
-setTimeout(() => { second25() }, 10000);
-setTimeout(() => { third25() }, 20000);
-setTimeout(() => { fourth25() }, 30000);
+// first25();
+// setTimeout(() => { second25() }, 10000);
+// setTimeout(() => { third25() }, 20000);
+// setTimeout(() => { fourth25() }, 30000);
+
+exports.owner = owner;

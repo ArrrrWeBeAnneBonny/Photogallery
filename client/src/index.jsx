@@ -20,6 +20,7 @@ class App extends React.Component {
     this.showModal = this.showModal.bind(this);
   }
 
+  // 'http://ec2-54-183-90-91.us-west-1.compute.amazonaws.com/photogallery'
   getData(campSite) {
     axios.get('/photogallery', {
       params: {
@@ -42,7 +43,7 @@ class App extends React.Component {
 
       // })
       .catch(function (error) {
-        console.log(error);
+        console.log('******' + error);
       })
   }
 
