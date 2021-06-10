@@ -15,7 +15,8 @@ class App extends React.Component {
       show: false,
       data: '',
       location: '',
-      images: ''
+      images: '',
+      startingImageIndex: ''
     }
     this.showModal = this.showModal.bind(this);
   }
@@ -47,8 +48,9 @@ class App extends React.Component {
       })
   }
 
+  // 'http://127.0.0.1:3003/overview/location'
   getLocation(campSite) {
-    axios.get('http://127.0.0.1:3003/overview/location', {
+    axios.get('http://ec2-35-163-3-32.us-west-2.compute.amazonaws.com/overview/location', {
       params: {
         campId: campSite
       }
@@ -85,21 +87,22 @@ class App extends React.Component {
     this.getLocation(campSite);
   }
 
-  showModal() {
+  showModal(e) {
     this.setState(prevState => ({
-      show: !prevState.show
+      show: !prevState.show,
+      startingImageIndex: Number(e.target.name)
     }));
+    console.log(e.target.name)
   }
 
   render() {
     return (
       <div>
-        <h1>HipCamp</h1>
         {this.state.data.length > 0 &&
-        <Images data={this.state.images} showModal={this.showModal}/>
+        <Images data={this.state.images} showModal={(e) => {this.showModal(e)}}/>
         }
         {this.state.data.length > 0 &&
-        <Modal show={this.state.show} data={this.state.data} location={this.state.location} onClose={() => this.showModal()} />
+        <Modal show={this.state.show} data={this.state.data} location={this.state.location} onClose={(e) => this.showModal(e)} image={this.state.startingImageIndex} />
         }
       </div>
     )

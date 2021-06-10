@@ -15,6 +15,18 @@
     height: 100%;
 }
 
+.image {
+    /* width: 38%; */
+    border-top: 5px;
+    width: 400px;
+    height: 250px;
+    float: 'left';
+    padding-right: 8px;
+    /* position: absolute; */
+    /* overflow-x: 'hidden'; */
+    overflow-y: hidden;
+}
+
 .modal-content {
     /* width: 500px; */
     /* background-color: antiquewhite; */
@@ -22,6 +34,7 @@
 
 .modal-header, .modal-footer {
     padding: 10px;
+    padding-bottom: 25px;
 }
 
 .modal-title {
@@ -38,6 +51,7 @@ html, body, #container, .carousel {
 	height:100%;
 	margin: 0;
 	width: 100%;
+    overflow-x: hidden;
 }
 
 /* $theme-blue: #14B6D4; */
@@ -68,17 +82,21 @@ html, body, #container, .carousel {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
+    font-size: 48px;  /* Preferred icon size */
     display: inline-block;
-    white-space: nowrap;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
     word-wrap: normal;
+    white-space: nowrap;
     direction: ltr;
-    -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
-}
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+  }
+
+.material-icons.md-18 { font-size: 18px; }
 
 .userName {
     padding-bottom: 0 '!important';

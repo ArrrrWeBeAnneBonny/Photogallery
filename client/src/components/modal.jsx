@@ -9,7 +9,7 @@ const Modal = props => {
         return (
             <div className='modal'  onClick={props.onClose}>
                 <div className='modal-content' onClick={e => e.stopPropagation()}>
-                    <Carousel data={props.data} location={props.location} />
+                    <Carousel data={props.data} location={props.location} image={props.image}/>
                 </div>
             </div>
         )
