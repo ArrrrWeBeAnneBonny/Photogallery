@@ -7,25 +7,26 @@ let groot = new Ipsum();
 
 // Create Connections ( I used both methods which is NOT best pratice, but I needed to)
 //for Docker
-// mongoose.connect('docker', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useFindAndModify: false,
-//   useCreateIndex: true
-// })
-// .then(() => {
-//   console.log('connected!')
-// })
-// .catch((err) => {
-//   console.log(err)
-// })
-
-mongoose.connect('mongodb://127.0.0.1:27017/photogallery', {
+mongoose.connect('docker', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true
-});
+})
+.then(() => {
+  console.log('connected!')
+})
+.catch((err) => {
+  console.log(err)
+})
+
+// For Local
+// mongoose.connect('mongodb://127.0.0.1:27017/photogallery', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false,
+//   useCreateIndex: true
+// });
 
 // Create Schema
 const imageSchema = new mongoose.Schema({

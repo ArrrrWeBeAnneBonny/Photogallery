@@ -22,8 +22,10 @@ class App extends React.Component {
   }
   // for Docker
   // 'http://ec2-54-183-90-91.us-west-1.compute.amazonaws.com/photogallery'
+  // For Local
+  // '/photogallery'
   getData(campSite) {
-    axios.get('/photogallery', {
+    axios.get('http://ec2-54-183-90-91.us-west-1.compute.amazonaws.com/photogallery', {
       params: {
         campId: campSite
       }
