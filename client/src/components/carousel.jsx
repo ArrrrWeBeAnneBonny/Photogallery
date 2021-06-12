@@ -1,7 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// // import { faChevronRight } from '@fortawesome/fontawesome-free-solid';
+import Modal2 from './modal2.jsx';
 
 
 const Arrow = ({ direction, clickFunction, glyph }) => (
@@ -31,11 +30,13 @@ class Carousel extends React.Component {
 		this.state = {
 			currentImageIndex: props.image,
 			images: null,
-			location: props.location
+			location: props.location,
+			show2: false
 		};
 
 		this.nextSlide = this.nextSlide.bind(this);
 		this.previousSlide = this.previousSlide.bind(this);
+		this.showModal2 = this.showModal2.bind(this);
 	}
 	previousSlide() {
 		// console.log(this.state.currentImageIndex)
@@ -95,7 +96,11 @@ class Carousel extends React.Component {
 		console.log(newValue);
 	}
 
-	//hello
+	showModal2() {
+		this.setState(prevState => ({
+		  show2: !prevState.show2,
+		}));
+	  }
 
 	bothLeft(e) {
 		this.previousSlide()
@@ -121,20 +126,21 @@ class Carousel extends React.Component {
 						<div className='userName' style={{ paddingLeft: '3px', paddingBottom: '-10 !important', marginTop: '0 !important', fontSize: '1em', fontWeight: '400', color: 'white' }}>{this.state.images[this.state.currentImageIndex][1]}</div>
 						<div style={{ paddingLeft: '3px', paddingBottom: '0 !important', marginTop: '-10 !important', fontSize: '9px', color: '#5c5c5c' }}>{this.state.images[this.state.currentImageIndex][3]}</div>
 					</div>
-					<div>
-					<button id="button" onClick={this.addLikes} style={{display: 'inline', position: 'absolute', top: '15%', right:'50%', textAlign:'right'}}>
+					<div onClick={this.showModal2}>
+					<button id="button" style={{display: 'inline', position: 'absolute', top: '15%', right:'50%', textAlign:'right'}}>
                     	<i className={"far fa-thumbs-up"} style={{display: 'inline', position: 'absolute', top: '30%', right:'41px'}}></i> Helpful {this.state.images[this.state.currentImageIndex][4]}
                     </button>
 					<i className="fab fa-pinterest" style={{display: 'inline', position: 'absolute', top: '55%', right:'55%', textAlign:'right', color: 'white', fontSize: '10px'}}></i>
-					<i class="fab fa-facebook" style={{display: 'inline', position: 'absolute', top: '55%', right:'53.5%', textAlign:'right', color: 'white', fontSize: '10px'}}></i>
-					<i class="fab fa-twitter" style={{display: 'inline', position: 'absolute', top: '55%', right:'52%', textAlign:'right', color: 'white', fontSize: '10px'}}></i>
-					<i class="fas fa-link" style={{display: 'inline', position: 'absolute', top: '55%', right:'50.5%', textAlign:'right', color: 'white', fontSize: '10px'}}></i>
+					<i className="fab fa-facebook" style={{display: 'inline', position: 'absolute', top: '55%', right:'53.5%', textAlign:'right', color: 'white', fontSize: '10px'}}></i>
+					<i className="fab fa-twitter" style={{display: 'inline', position: 'absolute', top: '55%', right:'52%', textAlign:'right', color: 'white', fontSize: '10px'}}></i>
+					<i className="fas fa-link" style={{display: 'inline', position: 'absolute', top: '55%', right:'50.5%', textAlign:'right', color: 'white', fontSize: '10px'}}></i>
 					</div>
 					<div style={{ paddingLeft: '3px', fontSize: '9px', paddingBottom: '5px', marginTop: '0 !important',color: 'white' }}><div className="material-icons" style={{fontSize: '10px'}}>place</div>{this.state.location.name}, {this.state.location.address}</div>
 				</div>
 				{/* <Arrow direction="left" clickFunction={this.previousSlide} glyph="&#9664;" /> */}
 				<i className={"fas fa-chevron-left hvr-grow"} onClick={(e)=> {this.bothLeft(e)}} style={{zIndex:'100px', fontSize: '20px', color: 'white', position: 'absolute', left: '0px', top: '50%'}}></i>
 				{/* <button><i className={"fas fa-chevron-left"}></i></button> */}
+				<Modal2 show2={this.state.show2}  onClose2={this.showModal2} />
 				<img onClick={e => e.stopPropagation()} src={this.state.images[this.state.currentImageIndex][0]} align='center' style={{marginBottom: '0 !important', objectFit: 'contain', display: 'block', marginLeft: 'auto', marginRight: 'auto', width: '60%', height: '400px'}}></img>
 				{/* <Arrow direction="right" clickFunction={this.nextSlide} glyph="&#9654;" />  */}
 				<i className={"fas fa-chevron-right hvr-grow"} onClick={(e)=> {this.bothRight(e)}} style={{fontSize: '20px', color: 'white', fontWeight: 'bold', position: 'absolute', right: '0px', top: '50%'}}></i>
