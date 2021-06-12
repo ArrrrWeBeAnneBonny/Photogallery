@@ -12,7 +12,7 @@
     "build-dev": "webpack --watch",
     "start": "nodemon server/server.js",
     "seed": "nodemon database/popscript.js",
-    "docker": "npm run start && npm run seed"
+    "docker": "npm run seed && npm run start"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",

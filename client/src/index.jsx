@@ -25,7 +25,7 @@ class App extends React.Component {
   // For Local
   // '/photogallery'
   getData(campSite) {
-    axios.get('photogallery', {
+    axios.get('/photogallery', {
       params: {
         campId: campSite
       }
@@ -51,6 +51,7 @@ class App extends React.Component {
   }
 
   // For Local
+  // http://ec2-35-163-3-32.us-west-2.compute.amazonaws.com/overview/location'
   // 'http://127.0.0.1:3003/overview/location'
   getLocation(campSite) {
     axios.get('http://ec2-35-163-3-32.us-west-2.compute.amazonaws.com/overview/location', {

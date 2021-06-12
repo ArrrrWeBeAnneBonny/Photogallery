@@ -7,7 +7,7 @@ let groot = new Ipsum();
 
 // Create Connections ( I used both methods which is NOT best pratice, but I needed to)
 //for Docker
-// mongoose.connect('docker', {
+// mongoose.connect('mongodb://mongo:27017/photogallery', {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true,
 //   useFindAndModify: false,
