@@ -8,14 +8,17 @@ const Modal = props => {
     } else {
         return (
             <div className='modal'  onClick={props.onClose}>
-                <div className='modal-content' onClick={e => e.stopPropagation()}>
-                    <Carousel data={props.data} location={props.location} image={props.image}/>
+                <div className='modal-content' onClick={props.onClose}>
+                    <Carousel data={props.data} location={props.location} image={props.image} onClick={props.onClose} />
                 </div>
             </div>
         )
-    }ß
+    }
 }
 
 // style={color='#333333'}
 
 export default Modal
+
+
+// onClick={e => e.stopPropagation()}

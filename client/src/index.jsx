@@ -6,7 +6,7 @@ import Carousel from './components/carousel.jsx';
 import Modal from './components/modal.jsx';
 import Images from './components/images.jsx';
 import axios from 'axios';
-
+import css from '/Users/michaelgallien/HackReactor/FEC/photogallery/client/dist/style.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -50,6 +50,7 @@ class App extends React.Component {
       })
   }
 
+  // For Local
   // 'http://127.0.0.1:3003/overview/location'
   getLocation(campSite) {
     axios.get('http://ec2-35-163-3-32.us-west-2.compute.amazonaws.com/overview/location', {
@@ -69,17 +70,18 @@ class App extends React.Component {
         console.log(error);
       })
   }
-  popImages() {
-    let imgArray = [];
-    for (var i = 0; i < this.props.data.length; i++) {
-      for (var j = 0; j < this.props.data[i].imageUrl.length; j++) {
-        imgArray.push(this.props.data[i].imageUrl[j]);
-      }
-    }
-    this.setState({
-      images: imgArray
-    })
-  }
+
+  // popImages() {
+  //   let imgArray = [];
+  //   for (var i = 0; i < this.props.data.length; i++) {
+  //     for (var j = 0; j < this.props.data[i].imageUrl.length; j++) {
+  //       imgArray.push(this.props.data[i].imageUrl[j]);
+  //     }
+  //   }
+  //   this.setState({
+  //     images: imgArray
+  //   })
+  // }
 
   componentDidMount() {
     const queryString = window.location.search;
@@ -89,22 +91,35 @@ class App extends React.Component {
     this.getLocation(campSite);
   }
 
-  showModal(e) {
-    this.setState(prevState => ({
-      show: !prevState.show,
+  showStatingImage(e) {
+    console.log(this.state.startingImageIndex)
+    this.setState(({
       startingImageIndex: Number(e.target.name)
     }));
-    console.log(e.target.name)
   }
 
+  showModal() {
+    console.log(this.state.show)
+    this.setState(prevState => ({
+      show: !prevState.show,
+    }));
+  }
+
+  bothFunctions(e) {
+    this.showStatingImage(e);
+    this.showModal()
+  }
+
+  // showModal={(e) => {this.showStatingImage(e); this.showModal}
+  // onClose={(e) => {this.showStatingImage(e); this.showModal}}
   render() {
     return (
       <div>
         {this.state.data.length > 0 &&
-        <Images data={this.state.images} showModal={(e) => {this.showModal(e)}}/>
+        <Images data={this.state.images} showModal={(e) => {this.bothFunctions(e)}}/>
         }
         {this.state.data.length > 0 &&
-        <Modal show={this.state.show} data={this.state.data} location={this.state.location} onClose={(e) => this.showModal(e)} image={this.state.startingImageIndex} />
+        <Modal show={this.state.show} data={this.state.data} location={this.state.location} onClose={(e) => {this.bothFunctions(e)}} image={this.state.startingImageIndex} />
         }
       </div>
     )
