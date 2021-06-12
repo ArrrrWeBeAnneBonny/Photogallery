@@ -16,9 +16,4 @@ const Modal = props => {
     }
 }
 
-// style={color='#333333'}
-
 export default Modal
-
-
-// onClick={e => e.stopPropagation()}

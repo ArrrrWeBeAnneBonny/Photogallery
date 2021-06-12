@@ -126,14 +126,14 @@ class Carousel extends React.Component {
 						<div className='userName' style={{ paddingLeft: '3px', paddingBottom: '-10 !important', marginTop: '0 !important', fontSize: '1em', fontWeight: '400', color: 'white' }}>{this.state.images[this.state.currentImageIndex][1]}</div>
 						<div style={{ paddingLeft: '3px', paddingBottom: '0 !important', marginTop: '-10 !important', fontSize: '9px', color: '#5c5c5c' }}>{this.state.images[this.state.currentImageIndex][3]}</div>
 					</div>
-					<div onClick={this.showModal2}>
-					<button id="button" style={{display: 'inline', position: 'absolute', top: '15%', right:'50%', textAlign:'right'}}>
+					<div>
+					<button id="button" style={{display: 'inline', position: 'absolute', top: '15%', right:'50%', textAlign:'right'}} onClick={this.showModal2}>
                     	<i className={"far fa-thumbs-up"} style={{display: 'inline', position: 'absolute', top: '30%', right:'41px'}}></i> Helpful {this.state.images[this.state.currentImageIndex][4]}
                     </button>
-					<i className="fab fa-pinterest" style={{display: 'inline', position: 'absolute', top: '55%', right:'55%', textAlign:'right', color: 'white', fontSize: '10px'}}></i>
-					<i className="fab fa-facebook" style={{display: 'inline', position: 'absolute', top: '55%', right:'53.5%', textAlign:'right', color: 'white', fontSize: '10px'}}></i>
-					<i className="fab fa-twitter" style={{display: 'inline', position: 'absolute', top: '55%', right:'52%', textAlign:'right', color: 'white', fontSize: '10px'}}></i>
-					<i className="fas fa-link" style={{display: 'inline', position: 'absolute', top: '55%', right:'50.5%', textAlign:'right', color: 'white', fontSize: '10px'}}></i>
+					<a href="https://www.pinterest.com/" target="_blank"><i className="fab fa-pinterest" style={{display: 'inline', position: 'absolute', top: '55%', right:'55%', textAlign:'right', color: 'white', fontSize: '10px'}}></i></a>
+					<a href="https://www.facebook.com/" target="_blank"><i className="fab fa-facebook" style={{display: 'inline', position: 'absolute', top: '55%', right:'53.5%', textAlign:'right', color: 'white', fontSize: '10px'}}></i></a>
+					<a href="https://twitter.com/" target="_blank"><i className="fab fa-twitter" style={{display: 'inline', position: 'absolute', top: '55%', right:'52%', textAlign:'right', color: 'white', fontSize: '10px'}}></i></a>
+					<a href="https://hipcamp.com" target="_blank"><i className="fas fa-link" style={{display: 'inline', position: 'absolute', top: '55%', right:'50.5%', textAlign:'right', color: 'white', fontSize: '10px'}}></i></a>
 					</div>
 					<div style={{ paddingLeft: '3px', fontSize: '9px', paddingBottom: '5px', marginTop: '0 !important',color: 'white' }}><div className="material-icons" style={{fontSize: '10px'}}>place</div>{this.state.location.name}, {this.state.location.address}</div>
 				</div>

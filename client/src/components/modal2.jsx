@@ -7,7 +7,7 @@ const Modal2 = props => {
         return null;
     } else {
         return (
-            <div className='modal'  onClick={props.onClose2}>
+            <div className='modal2'  onClick={props.onClose2}>
                 <div className='modal-content' onClick={e => e.stopPropagation()}>
                     <h1>Please Login To Proceed</h1>
                 </div>
