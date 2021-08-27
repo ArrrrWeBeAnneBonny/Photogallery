@@ -1,13 +1,12 @@
-# Project Name
+# Anne Bonny - Hipcamp.com Mock Photogallery Service
 
 > Project description
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/ArrrrWeBeAnneBonny/booking
+  - https://github.com/ArrrrWeBeAnneBonny/overview
+  - https://github.com/ArrrrWeBeAnneBonny/reviews
 
 ## Table of Contents
 
