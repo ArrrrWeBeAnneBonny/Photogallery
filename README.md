@@ -20,10 +20,17 @@ Hipcamp.com is an ecommerce website that tailors to landowners and campers. On h
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
+Latest version of:
+```sh
+- Node.js / Express
+- Webpack/Babel
+- React
+- MongoDB
+- Jest
+- Axios
+```
 
-- Node 6.13.0
-- etc
+package.json is included
 
 ## Development
 
@@ -34,5 +41,15 @@ From within the root directory:
 ```sh
 npm install -g webpack
 npm install
+```
+If seeding database: 
+```sh
+npm run seed
+```
+
+If deploying run from within the root directory:
+```sh
+npm run "build-dev"
+npm run start
 ```
 
