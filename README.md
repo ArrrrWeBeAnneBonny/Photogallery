@@ -1,6 +1,6 @@
-# Anne Bonny - Hipcamp.com Mock Photogallery Service
+# Anne Bonny - Hipcamp.com Photogallery Service
 
-> Project description
+Hipcamp.com is an ecommerce website that tailors to landowners and campers. On hipcamp.com, users can post parts of their land for consumers to "rent" for a few nights, much like AirBnB. But unlikely AirBnB, consumers are not renting homes, or appartments, but the land in a (hopefully) secluded area for them and some company to enjoy on a camping holiday. For Hack Reactors Front End Capstone (FEC) Project, we (the group Anne Bonny), have been tasked with recreating a faithful item page, using modern front-end applications like React, and AWS for deployment. My Service is the "Photogallery". This service is in charge of the interactive image carousel that all item pages have. On this service, users can scroll through, and "like" images, as well as quickly post them on several social media website (FB, Insta, Twitter, Pintrest).  
 
 ## Related Projects
 
