@@ -25,7 +25,7 @@ Latest version of:
 - Node.js / Express
 - Webpack/Babel
 - React
-- MongoDB
+- Mongoose
 - Jest
 - Axios
 ```
@@ -33,6 +33,12 @@ Latest version of:
 package.json is included
 
 ## Development
+
+If deploying, run from within the root directory:
+```sh
+npm run build-dev
+npm run start
+```
 
 ### Installing Dependencies
 
@@ -42,14 +48,15 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
+
 If seeding database: 
 ```sh
-npm run seed
-```
+ - npm run seedCollection
+ 
+Wait several minutes for the collections to populate. The time this takes will vary by hardware
 
-If deploying run from within the root directory:
-```sh
-npm run "build-dev"
-npm run start
+ - npm run seed
+ 
+Population of documents may take several minutes
 ```
 
