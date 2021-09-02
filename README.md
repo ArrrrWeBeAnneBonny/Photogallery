@@ -34,7 +34,7 @@ Latest version of:
 
 package.json is included
 
-### Installing Dependencies
+## Installing Dependencies
 
 From within the root directory:
 
@@ -42,7 +42,8 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
-### Seeding The Database
+
+## Seeding The Database
 
 From within the root directory: 
 ```sh
