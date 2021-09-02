@@ -11,8 +11,10 @@ Hipcamp.com is an ecommerce website that tailors to landowners and campers. On h
 ## Table of Contents
 
 1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+2. [Requirements](#requirements)
+3. [Installing Dependencies](#dependencies)
+4. [Seeding Database](#database)
+5. [Development](#development)
 
 ## Usage
 
@@ -32,14 +34,6 @@ Latest version of:
 
 package.json is included
 
-## Development
-
-If deploying, run from within the root directory:
-```sh
-npm run build-dev
-npm run start
-```
-
 ### Installing Dependencies
 
 From within the root directory:
@@ -48,8 +42,9 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
+### Seeding The Database
 
-If seeding database: 
+From within the root directory: 
 ```sh
  - npm run seedCollection
  
@@ -59,4 +54,14 @@ Wait several minutes for the collections to populate. The time this takes will v
  
 Population of documents may take several minutes
 ```
+
+## Development
+
+If deploying, run from within the root directory:
+```sh
+npm run build-dev
+npm run start
+connect to http://localhost:3004/
+```
+
 
