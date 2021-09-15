@@ -14,7 +14,7 @@ class App extends React.Component {
     this.state = {
       show: false,
       data: '',
-      location: '',
+      location: {name: 'Pirate Bay, CA', address: '1234 Get Outta Here ln'},
       images: '',
       startingImageIndex: ''
     }
@@ -42,19 +42,17 @@ class App extends React.Component {
           images: imgArray
         })
       })
-      // .then((results) => {
-
-      // })
       .catch(function (error) {
         console.log(error);
       })
   }
 
-  // For Local
+  // For Docker
   // http://ec2-35-163-3-32.us-west-2.compute.amazonaws.com/overview/location'
+  // For Local
   // 'http://127.0.0.1:3003/overview/location'
   getLocation(campSite) {
-    axios.get('http://ec2-35-163-3-32.us-west-2.compute.amazonaws.com/overview/location', {
+    axios.get('http://127.0.0.1:3003/overview/location', {
       params: {
         campId: campSite
       }
@@ -62,34 +60,20 @@ class App extends React.Component {
       .then((response) => {
         this.setState({
           location: response.data
+          // location: 'Pirate Bay, CA'
         })
       })
-      // .then((results) => {
-      //   console.log(this.state.location)
-      // })
       .catch(function (error) {
         console.log(error);
       })
   }
-
-  // popImages() {
-  //   let imgArray = [];
-  //   for (var i = 0; i < this.props.data.length; i++) {
-  //     for (var j = 0; j < this.props.data[i].imageUrl.length; j++) {
-  //       imgArray.push(this.props.data[i].imageUrl[j]);
-  //     }
-  //   }
-  //   this.setState({
-  //     images: imgArray
-  //   })
-  // }
 
   componentDidMount() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const campSite = urlParams.get('campId');
     this.getData(campSite)
-    this.getLocation(campSite);
+    // this.getLocation(campSite);
   }
 
   showStatingImage(e) {

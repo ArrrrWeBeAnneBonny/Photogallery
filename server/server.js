@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/photogallery', (req, res) => {
   if (!req.query.campId) {
-    campSite = 1;
+    campSite = 0;
   } else {
     campSite = req.query.campId;
   }

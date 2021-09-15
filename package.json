@@ -11,6 +11,7 @@
     "test": "jest --force-exit --detectOpenHandles",
     "build-dev": "webpack --watch",
     "start": "nodemon server/server.js",
+    "seedCollection": "nodemon database/collectionPop.js",
     "seed": "nodemon database/popscript.js",
     "docker": "npm run seed && npm run start"
   },

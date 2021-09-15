@@ -33,7 +33,7 @@
     width: 480px;
     height: 310px;
     float: 'left';
-    padding-right: 8px;
+    /* padding-right: 8px; */
     /* position: absolute; */
     /* overflow-x: 'hidden'; */
     overflow-y: hidden;
@@ -45,13 +45,16 @@
 }
 
 .modal-header, .modal-footer {
-    padding: 10px;
-    padding-bottom: 25px;
+    /* padding: -10px; */
+    /* padding-bottom: 25px; */
+    /* position: absolute; */
+    /* max-width: 80%; */
+    /* margin-top: 115px; */
 }
 
 .modal-title {
     margin: 0;
-}
+}x
 
 .modal-body {
     padding: 10px;
