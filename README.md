@@ -20,7 +20,7 @@ Hipcamp.com is an ecommerce website that tailors to landowners and campers. On h
 
 > Some usage instructions
 
-![](Photogallery Gif.gif)
+
 
 ## Requirements
 
