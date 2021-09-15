@@ -16,7 +16,7 @@ For Hack Reactors Front End Capstone (FEC) Project, we (the Anne Bonny group) wa
 2. [Requirements](#requirements)
 3. [Installing Dependencies](#dependencies)
 4. [Seeding Database](#database)
-5. [Development](#development)
+5. [Deployment](#deployment)
 
 ## Usage
 
@@ -31,7 +31,8 @@ For Hack Reactors Front End Capstone (FEC) Project, we (the Anne Bonny group) wa
 - Likes
 - An Array of Captions
 ```
-> 
+> It also calls on the Overview Service (Currently not deployed), for information of the location of the campsite. This will retrun the location of the campsite.
+> ![alt text]()
 
 ## Requirements
 
@@ -69,7 +70,7 @@ Wait several minutes for the collections to populate. The time this takes will v
 Population of documents may take several minutes
 ```
 
-## Development
+## Deployment
 
 If deploying, run from within the root directory:
 ```sh
