@@ -60,7 +60,6 @@ class App extends React.Component {
       .then((response) => {
         this.setState({
           location: response.data
-          // location: 'Pirate Bay, CA'
         })
       })
       .catch(function (error) {
