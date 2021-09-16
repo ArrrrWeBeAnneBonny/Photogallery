@@ -31,7 +31,7 @@ For Hack Reactors Front End Capstone (FEC) Project, we (the Anne Bonny group) wa
 - Likes
 - An Array of Captions
 ```
-> It also calls on the Overview Service (Currently not deployed), for information of the location of the campsite. This will retrun the location of the campsite.
+> It also calls on the Overview Service (not currently deployed), this will retrun the location of the campsite.
 > ![alt text](photogallery.png)
 
 ## Requirements
